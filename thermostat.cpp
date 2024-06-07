@@ -1,26 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-int main(){
+#define int long long
+signed main(){
 
 int t;
 cin>>t;
 while(t--){
-int a,b,c,n,m;
-cin>>a>>b>>c;
-cin>>n>>m;
+int l,r,x,a,b;
+cin>>l>>r>>x;
+cin>>a>>b;
+
+int s,d;
+s=a;
+d=b;
+a=min(s,d);
+b=max(s,d);
 
 
-
-
-int diff=abs(n-m);
-if(diff==0){cout<<0<<endl;
-    }else if(diff==c){
+int diff=abs(a-b);
+if(diff==0){
+    cout<<0<<endl;
+}else if(diff>=x){
     cout<<1<<endl;
-}else if(diff<c&&abs(m+c)<=b){
+}else if(a-x>=l||b+x<=r){
 cout<<2<<endl;
-}else if(diff<c&&abs(m-c)>=a){
-cout<<3<<endl;
+}
+else if(l<=b-x&&r>=a+x){
+    cout<<3<<endl;
 }else{
     cout<<-1<<endl;
 }

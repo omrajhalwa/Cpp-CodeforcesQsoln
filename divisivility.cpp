@@ -1,56 +1,60 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define int long long
+#define M 1000000007 
+
+
 
 signed main(){
+
+
 int t;
 cin>>t;
 while(t--){
- long long int n,p=1,sum=2;
+int n;
 cin>>n;
- long long y=1,c=0,r=0;
-vector< long long int>v;
-vector< long long int>a(1000001);
-for(int i=1;i<=n;i++){
-     cin>>y;
-   a.push_back(y);
-   p=p*y;
-    if(p%2==0){
-        p=p/2;
-        c++;
-    }
-   if(i==sum){r++;
-    v.push_back(r);
-      sum=sum*2;}
+vector<int>v(n);int pro=1;
+for(int i=0;i<n;i++){
+  cin>>v[i];
+  
+}
+int two=0;
+for(int i=0;i<n;i++){
+
+int l=v[i];
+while(l%2==0&&l>0){
+  two++;
+  l=(l/2)%M;
 }
 
- long long l,k=0,q=0;
-l=pow(2,n);
-if(c>=n){
-    cout<<0<<endl;q++;
+}
+
+vector<int>req;
+for(int i=n;i>=1;i--){
+int k=i;int p=0;
+while(k%2==0&&k>0){
+  p++;
+  k=(k/2)%M;
+}
+
+if(p!=0){
+  req.push_back(p);
+}
+}
+
+sort(req.begin(),req.end());
+int ans=0,i=req.size()-1;
+while(n>two&&i>=0&&req.size()>0){
+ans++;
+two+=req[i];
+i--;
+}
+
+
+if(two<n){
+  cout<<-1<<endl;
 }else{
-for(int i=v.size()-1;i>=0;i--){
-    c=c+v[i];k++;
-    
-if(c>=n){
-  cout<<k<<endl; 
-  q++; 
-  break;
-}
-
-}
-
-
-}
-
-if(q==0){
-    cout<<-1<<endl;
+  cout<<ans<<endl;
 }
 }
-
-
-
-
-
-
-return 0;
 }

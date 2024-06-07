@@ -1,35 +1,45 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-int main(){
+#define int long long
+signed main(){
 int t;
 cin>>t;
-
-
 while(t--){
+
 int n;
 cin>>n;
-int a[n];
+vector<int>v(n);int sum=0,mn=INT64_MAX;
 for(int i=0;i<n;i++){
-    cin>>a[i];
-    
+    cin>>v[i];
+   if(i!=0){
+    if(mn>v[i]){
+        mn=v[i];
+        sum=i;
+    }
+   }
 }
- a[0]=a[0]-1;
-sort(a,a+n);
-int q=a[0],r=a[1];
-int sum;
+int bob=INT64_MAX;
 
-    sum=q+r;
+v[0]--;
+for(int i=0;i<n;i++){
 
-if(sum%2==0){
+if(i!=sum){
+
+    bob=min(bob,v[i]);
+}
+
+
+}
+
+
+
+if(mn<=bob){
     cout<<"Alice"<<endl;
 }else{
     cout<<"Bob"<<endl;
 }
 
-
-
-
+}
 
 }
 
@@ -37,4 +47,3 @@ if(sum%2==0){
 
 
 
-}
